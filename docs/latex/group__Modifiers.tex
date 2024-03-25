@@ -1,0 +1,90 @@
+\hypertarget{group__Modifiers}{}\doxysection{Manipulate the data in the stream}
+\label{group__Modifiers}\index{Manipulate the data in the stream@{Manipulate the data in the stream}}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classctream_1_1internal_1_1Ctream}{Ctream}}$<$ T $>$ \mbox{\hyperlink{group__Modifiers_ga7df3433014df9bea66c2cf17d21c5527}{ctream\+::internal\+::\+Ctream$<$ T $>$\+::filter}} (const std\+::function$<$ bool(const T \&)$>$ filter) const
+\begin{DoxyCompactList}\small\item\em Remove from the stream the elements that do not match a filter. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename U $>$ }\\\mbox{\hyperlink{classctream_1_1internal_1_1Ctream}{Ctream}}$<$ U $>$ \mbox{\hyperlink{group__Modifiers_ga150e3b11243da7ab3d6ec4b88a6d9981}{ctream\+::internal\+::\+Ctream$<$ T $>$\+::extract}} (const std\+::function$<$ const U \&(const T \&)$>$ \&extractor) const
+\begin{DoxyCompactList}\small\item\em Extract data from the elements of the stream. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename U $>$ }\\\mbox{\hyperlink{classctream_1_1internal_1_1Ctream}{Ctream}}$<$ U $>$ \mbox{\hyperlink{group__Modifiers_ga9f3602e034be80a9cb6ca69901e72b4c}{ctream\+::internal\+::\+Ctream$<$ T $>$\+::map}} (const std\+::function$<$ U(const T \&)$>$ \&mapper) const
+\begin{DoxyCompactList}\small\item\em Transform the data from the elements in the stream. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{group__Modifiers_ga150e3b11243da7ab3d6ec4b88a6d9981}\label{group__Modifiers_ga150e3b11243da7ab3d6ec4b88a6d9981}} 
+\index{Manipulate the data in the stream@{Manipulate the data in the stream}!extract@{extract}}
+\index{extract@{extract}!Manipulate the data in the stream@{Manipulate the data in the stream}}
+\doxysubsubsection{\texorpdfstring{extract()}{extract()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+template$<$typename U $>$ \\
+\mbox{\hyperlink{classctream_1_1internal_1_1Ctream}{Ctream}}$<$U$>$ \mbox{\hyperlink{classctream_1_1internal_1_1Ctream}{ctream\+::internal\+::\+Ctream}}$<$ T $>$\+::extract (\begin{DoxyParamCaption}\item[{const std\+::function$<$ const U \&(const T \&)$>$ \&}]{extractor }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Extract data from the elements of the stream. 
+
+When the data can be extracted by reference from the elements, this is better than map because is does not copy and allocate new elements
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em U} & The type of the extracted data \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em extractor} & A function that, given an element of the stream, returns a const reference to type U data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classctream_1_1internal_1_1Ctream}{Ctream}}\uline{ A stream with the extracted data }
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__Modifiers_ga7df3433014df9bea66c2cf17d21c5527}\label{group__Modifiers_ga7df3433014df9bea66c2cf17d21c5527}} 
+\index{Manipulate the data in the stream@{Manipulate the data in the stream}!filter@{filter}}
+\index{filter@{filter}!Manipulate the data in the stream@{Manipulate the data in the stream}}
+\doxysubsubsection{\texorpdfstring{filter()}{filter()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classctream_1_1internal_1_1Ctream}{Ctream}}$<$T$>$ \mbox{\hyperlink{classctream_1_1internal_1_1Ctream}{ctream\+::internal\+::\+Ctream}}$<$ T $>$\+::filter (\begin{DoxyParamCaption}\item[{const std\+::function$<$ bool(const T \&)$>$}]{filter }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Remove from the stream the elements that do not match a filter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filter} & A condition on a stream element. The element remains in the stream if and only if it matches the filter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Ctream$<$\+T$>$ A stream with only the filtered data 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__Modifiers_ga9f3602e034be80a9cb6ca69901e72b4c}\label{group__Modifiers_ga9f3602e034be80a9cb6ca69901e72b4c}} 
+\index{Manipulate the data in the stream@{Manipulate the data in the stream}!map@{map}}
+\index{map@{map}!Manipulate the data in the stream@{Manipulate the data in the stream}}
+\doxysubsubsection{\texorpdfstring{map()}{map()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+template$<$typename U $>$ \\
+\mbox{\hyperlink{classctream_1_1internal_1_1Ctream}{Ctream}}$<$U$>$ \mbox{\hyperlink{classctream_1_1internal_1_1Ctream}{ctream\+::internal\+::\+Ctream}}$<$ T $>$\+::map (\begin{DoxyParamCaption}\item[{const std\+::function$<$ U(const T \&)$>$ \&}]{mapper }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Transform the data from the elements in the stream. 
+
+If the mapper you want to use can return a const reference, it is preferable to use extract instead to avoid overhead
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em U} & The type of the transformed data \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em mapper} & A function that, given an element of the stream, returns an element of type U \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classctream_1_1internal_1_1Ctream}{Ctream}}\uline{ A stream with the transformed data }
+\end{DoxyReturn}

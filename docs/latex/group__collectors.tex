@@ -1,0 +1,33 @@
+\hypertarget{group__collectors}{}\doxysection{Collector API}
+\label{group__collectors}\index{Collector API@{Collector API}}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classctream_1_1collectors_1_1Collector}{ctream\+::collectors\+::\+Collector$<$ T, A, R $>$}}
+\begin{DoxyCompactList}\small\item\em A class that outputs data from the stream. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classctream_1_1collectors_1_1Sum}{ctream\+::collectors\+::\+Sum$<$ T $>$}}
+\begin{DoxyCompactList}\small\item\em Get the sum of the elements of the stream. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classctream_1_1collectors_1_1Product}{ctream\+::collectors\+::\+Product$<$ T $>$}}
+\begin{DoxyCompactList}\small\item\em Get the product of the elements of the stream. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classctream_1_1collectors_1_1Min}{ctream\+::collectors\+::\+Min$<$ T $>$}}
+\begin{DoxyCompactList}\small\item\em Get the minimum of the elements of the stream (0 if empty) \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classctream_1_1collectors_1_1Max}{ctream\+::collectors\+::\+Max$<$ T $>$}}
+\begin{DoxyCompactList}\small\item\em Get the maximum of the elements of the stream (0 if empty) \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classctream_1_1collectors_1_1Concat}{ctream\+::collectors\+::\+Concat$<$ T $>$}}
+\begin{DoxyCompactList}\small\item\em Get a strings where all the elements of the stream are concatenated. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classctream_1_1collectors_1_1ToList}{ctream\+::collectors\+::\+To\+List$<$ T $>$}}
+\begin{DoxyCompactList}\small\item\em Get a list containing the elements of the stream. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classctream_1_1collectors_1_1ToVector}{ctream\+::collectors\+::\+To\+Vector$<$ T $>$}}
+\begin{DoxyCompactList}\small\item\em Get a vector containing the elements of the stream. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classctream_1_1collectors_1_1Custom}{ctream\+::collectors\+::\+Custom$<$ T, A, R $>$}}
+\begin{DoxyCompactList}\small\item\em Create a custom \mbox{\hyperlink{classctream_1_1collectors_1_1Collector}{Collector}} by specifying all functions implementations. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+{\ttfamily \mbox{\hyperlink{classctream_1_1collectors_1_1Collector}{Collector}}$<$T = \{input type\}, A = \{accumulator type\}, R = \{result type\}$>$}
+
+Collectors are objects that contain information on how to export the data from the streams into usable output data. Their aim is to have a simple syntax, and to be parallelized easily.
+
+The logic behind collectors is to {\ttfamily accumulate()} the elements of type T of the stream in to partial results of type A. These partial results are then combined into a complete result of type A with function {\ttfamily combine()}. This complete result is finally converted into the final output result of type R by function {\ttfamily finish()}.
+
+Using a different type for A and R is not always necessary, but it can sometimes be very useful. For instance, to concatenate strings, a solution to avoid copying strings endlessly (the one used in this library) is to use stringstream objects as accumulators, and then finish by extracting the string from the stringstream. 

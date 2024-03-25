@@ -1,0 +1,142 @@
+\hypertarget{classctream_1_1collectors_1_1Concat}{}\doxysection{ctream\+::collectors\+::Concat$<$ T $>$ Class Template Reference}
+\label{classctream_1_1collectors_1_1Concat}\index{ctream::collectors::Concat$<$ T $>$@{ctream::collectors::Concat$<$ T $>$}}
+
+
+Get a strings where all the elements of the stream are concatenated.  
+
+
+
+
+{\ttfamily \#include $<$ctream.\+hpp$>$}
+
+
+
+Inheritance diagram for ctream\+::collectors\+::Concat$<$ T $>$\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=192pt]{classctream_1_1collectors_1_1Concat__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for ctream\+::collectors\+::Concat$<$ T $>$\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=192pt]{classctream_1_1collectors_1_1Concat__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::stringstream \mbox{\hyperlink{classctream_1_1collectors_1_1Concat_a84c7a7123f6e2e3934d96be0f7d45a89}{supply}} () const override
+\begin{DoxyCompactList}\small\item\em A function that provides a blank accumulator (an accumulator in the expected starting state) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classctream_1_1collectors_1_1Concat_ae9b232a460ef290f2fb7f5454061681b}{accumulate}} (std\+::stringstream \&a, const T \&b) const override
+\begin{DoxyCompactList}\small\item\em Feed an element to an accumulator. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classctream_1_1collectors_1_1Concat_abff5998841927ede9f6a796e45bcb118}{combine}} (std\+::stringstream \&a, std\+::stringstream \&b) const override
+\begin{DoxyCompactList}\small\item\em Feed all the content of an accumulator to another. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classctream_1_1collectors_1_1Concat_a9498db7d06da29b98d58e3d08fec4c2f}{finish}} (std\+::stringstream \&a) const override
+\begin{DoxyCompactList}\small\item\em Convert the final content of the accumulator into the output. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$\newline
+class ctream\+::collectors\+::\+Concat$<$ T $>$}
+
+Get a strings where all the elements of the stream are concatenated. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classctream_1_1collectors_1_1Concat_ae9b232a460ef290f2fb7f5454061681b}\label{classctream_1_1collectors_1_1Concat_ae9b232a460ef290f2fb7f5454061681b}} 
+\index{ctream::collectors::Concat$<$ T $>$@{ctream::collectors::Concat$<$ T $>$}!accumulate@{accumulate}}
+\index{accumulate@{accumulate}!ctream::collectors::Concat$<$ T $>$@{ctream::collectors::Concat$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{accumulate()}{accumulate()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{classctream_1_1collectors_1_1Concat}{ctream\+::collectors\+::\+Concat}}$<$ T $>$\+::accumulate (\begin{DoxyParamCaption}\item[{std\+::stringstream \&}]{a,  }\item[{const T \&}]{b }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Feed an element to an accumulator. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & Accumulator that will receive the element \\
+\hline
+{\em b} & Element that will be fed the accumulator \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classctream_1_1collectors_1_1Collector_af3526d3da1c1ec9247f5a6a6945d42e3}{ctream\+::collectors\+::\+Collector$<$ T, std\+::stringstream, std\+::string $>$}}.
+
+\mbox{\Hypertarget{classctream_1_1collectors_1_1Concat_abff5998841927ede9f6a796e45bcb118}\label{classctream_1_1collectors_1_1Concat_abff5998841927ede9f6a796e45bcb118}} 
+\index{ctream::collectors::Concat$<$ T $>$@{ctream::collectors::Concat$<$ T $>$}!combine@{combine}}
+\index{combine@{combine}!ctream::collectors::Concat$<$ T $>$@{ctream::collectors::Concat$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{combine()}{combine()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{classctream_1_1collectors_1_1Concat}{ctream\+::collectors\+::\+Concat}}$<$ T $>$\+::combine (\begin{DoxyParamCaption}\item[{std\+::stringstream \&}]{a,  }\item[{std\+::stringstream \&}]{b }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Feed all the content of an accumulator to another. 
+
+Implementations can be destructive the the source accumulator (b) without risk, because b will never be used again. For large data types, it is often useful to do a move of the data from b into a.
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & Destination accumulator \\
+\hline
+{\em b} & Source accumulator \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classctream_1_1collectors_1_1Collector_ae2542ded307a3c5da3ded1000a9cb821}{ctream\+::collectors\+::\+Collector$<$ T, std\+::stringstream, std\+::string $>$}}.
+
+\mbox{\Hypertarget{classctream_1_1collectors_1_1Concat_a9498db7d06da29b98d58e3d08fec4c2f}\label{classctream_1_1collectors_1_1Concat_a9498db7d06da29b98d58e3d08fec4c2f}} 
+\index{ctream::collectors::Concat$<$ T $>$@{ctream::collectors::Concat$<$ T $>$}!finish@{finish}}
+\index{finish@{finish}!ctream::collectors::Concat$<$ T $>$@{ctream::collectors::Concat$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{finish()}{finish()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+std\+::string \mbox{\hyperlink{classctream_1_1collectors_1_1Concat}{ctream\+::collectors\+::\+Concat}}$<$ T $>$\+::finish (\begin{DoxyParamCaption}\item[{std\+::stringstream \&}]{a }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Convert the final content of the accumulator into the output. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & Final content of the accumulator \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return\+Type Output of the collector 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classctream_1_1collectors_1_1Collector_a383e637f9f5ad9d14f2af7588586a723}{ctream\+::collectors\+::\+Collector$<$ T, std\+::stringstream, std\+::string $>$}}.
+
+\mbox{\Hypertarget{classctream_1_1collectors_1_1Concat_a84c7a7123f6e2e3934d96be0f7d45a89}\label{classctream_1_1collectors_1_1Concat_a84c7a7123f6e2e3934d96be0f7d45a89}} 
+\index{ctream::collectors::Concat$<$ T $>$@{ctream::collectors::Concat$<$ T $>$}!supply@{supply}}
+\index{supply@{supply}!ctream::collectors::Concat$<$ T $>$@{ctream::collectors::Concat$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{supply()}{supply()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+std\+::stringstream \mbox{\hyperlink{classctream_1_1collectors_1_1Concat}{ctream\+::collectors\+::\+Concat}}$<$ T $>$\+::supply (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+A function that provides a blank accumulator (an accumulator in the expected starting state) 
+
+\begin{DoxyReturn}{Returns}
+Accumulator\+Type A blank accumulator 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classctream_1_1collectors_1_1Collector_a3ec2276ef997e394b0bc42438dc33fa1}{ctream\+::collectors\+::\+Collector$<$ T, std\+::stringstream, std\+::string $>$}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/ctream.\+hpp\end{DoxyCompactItemize}

@@ -1,0 +1,145 @@
+\hypertarget{classctream_1_1collectors_1_1Min}{}\doxysection{ctream\+::collectors\+::Min$<$ T $>$ Class Template Reference}
+\label{classctream_1_1collectors_1_1Min}\index{ctream::collectors::Min$<$ T $>$@{ctream::collectors::Min$<$ T $>$}}
+
+
+Get the minimum of the elements of the stream (0 if empty)  
+
+
+
+
+{\ttfamily \#include $<$ctream.\+hpp$>$}
+
+
+
+Inheritance diagram for ctream\+::collectors\+::Min$<$ T $>$\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=207pt]{classctream_1_1collectors_1_1Min__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for ctream\+::collectors\+::Min$<$ T $>$\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=207pt]{classctream_1_1collectors_1_1Min__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classctream_1_1collectors_1_1Min_a017bdc4d18c77bb5576df418388fa9f0}\label{classctream_1_1collectors_1_1Min_a017bdc4d18c77bb5576df418388fa9f0}} 
+{\bfseries Min} (const std\+::function$<$ bool(const T \&, const T \&)$>$ comp)
+\item 
+\mbox{\hyperlink{structctream_1_1internal_1_1Optional}{internal\+::\+Optional}}$<$ T $>$ \mbox{\hyperlink{classctream_1_1collectors_1_1Min_a515972a28826ae9c3d777a8861046b4d}{supply}} () const override
+\begin{DoxyCompactList}\small\item\em A function that provides a blank accumulator (an accumulator in the expected starting state) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classctream_1_1collectors_1_1Min_afeea85bf3b4ca2df1876eae4400af0eb}{accumulate}} (\mbox{\hyperlink{structctream_1_1internal_1_1Optional}{internal\+::\+Optional}}$<$ T $>$ \&a, const T \&b) const override
+\begin{DoxyCompactList}\small\item\em Feed an element to an accumulator. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classctream_1_1collectors_1_1Min_a1c7a8f2cad2944ebed6502c02aba340f}{combine}} (\mbox{\hyperlink{structctream_1_1internal_1_1Optional}{internal\+::\+Optional}}$<$ T $>$ \&a, \mbox{\hyperlink{structctream_1_1internal_1_1Optional}{internal\+::\+Optional}}$<$ T $>$ \&b) const override
+\begin{DoxyCompactList}\small\item\em Feed all the content of an accumulator to another. \end{DoxyCompactList}\item 
+T \mbox{\hyperlink{classctream_1_1collectors_1_1Min_ad856cc9bb5d039a5db15535282e9d2a9}{finish}} (\mbox{\hyperlink{structctream_1_1internal_1_1Optional}{internal\+::\+Optional}}$<$ T $>$ \&a) const override
+\begin{DoxyCompactList}\small\item\em Convert the final content of the accumulator into the output. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$\newline
+class ctream\+::collectors\+::\+Min$<$ T $>$}
+
+Get the minimum of the elements of the stream (0 if empty) 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classctream_1_1collectors_1_1Min_afeea85bf3b4ca2df1876eae4400af0eb}\label{classctream_1_1collectors_1_1Min_afeea85bf3b4ca2df1876eae4400af0eb}} 
+\index{ctream::collectors::Min$<$ T $>$@{ctream::collectors::Min$<$ T $>$}!accumulate@{accumulate}}
+\index{accumulate@{accumulate}!ctream::collectors::Min$<$ T $>$@{ctream::collectors::Min$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{accumulate()}{accumulate()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{classctream_1_1collectors_1_1Min}{ctream\+::collectors\+::\+Min}}$<$ T $>$\+::accumulate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structctream_1_1internal_1_1Optional}{internal\+::\+Optional}}$<$ T $>$ \&}]{a,  }\item[{const T \&}]{b }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Feed an element to an accumulator. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & Accumulator that will receive the element \\
+\hline
+{\em b} & Element that will be fed the accumulator \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classctream_1_1collectors_1_1Collector_af3526d3da1c1ec9247f5a6a6945d42e3}{ctream\+::collectors\+::\+Collector$<$ T, internal\+::\+Optional$<$ T $>$, T $>$}}.
+
+\mbox{\Hypertarget{classctream_1_1collectors_1_1Min_a1c7a8f2cad2944ebed6502c02aba340f}\label{classctream_1_1collectors_1_1Min_a1c7a8f2cad2944ebed6502c02aba340f}} 
+\index{ctream::collectors::Min$<$ T $>$@{ctream::collectors::Min$<$ T $>$}!combine@{combine}}
+\index{combine@{combine}!ctream::collectors::Min$<$ T $>$@{ctream::collectors::Min$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{combine()}{combine()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{classctream_1_1collectors_1_1Min}{ctream\+::collectors\+::\+Min}}$<$ T $>$\+::combine (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structctream_1_1internal_1_1Optional}{internal\+::\+Optional}}$<$ T $>$ \&}]{a,  }\item[{\mbox{\hyperlink{structctream_1_1internal_1_1Optional}{internal\+::\+Optional}}$<$ T $>$ \&}]{b }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Feed all the content of an accumulator to another. 
+
+Implementations can be destructive the the source accumulator (b) without risk, because b will never be used again. For large data types, it is often useful to do a move of the data from b into a.
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & Destination accumulator \\
+\hline
+{\em b} & Source accumulator \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classctream_1_1collectors_1_1Collector_ae2542ded307a3c5da3ded1000a9cb821}{ctream\+::collectors\+::\+Collector$<$ T, internal\+::\+Optional$<$ T $>$, T $>$}}.
+
+\mbox{\Hypertarget{classctream_1_1collectors_1_1Min_ad856cc9bb5d039a5db15535282e9d2a9}\label{classctream_1_1collectors_1_1Min_ad856cc9bb5d039a5db15535282e9d2a9}} 
+\index{ctream::collectors::Min$<$ T $>$@{ctream::collectors::Min$<$ T $>$}!finish@{finish}}
+\index{finish@{finish}!ctream::collectors::Min$<$ T $>$@{ctream::collectors::Min$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{finish()}{finish()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \mbox{\hyperlink{classctream_1_1collectors_1_1Min}{ctream\+::collectors\+::\+Min}}$<$ T $>$\+::finish (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structctream_1_1internal_1_1Optional}{internal\+::\+Optional}}$<$ T $>$ \&}]{a }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Convert the final content of the accumulator into the output. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & Final content of the accumulator \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return\+Type Output of the collector 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classctream_1_1collectors_1_1Collector_a383e637f9f5ad9d14f2af7588586a723}{ctream\+::collectors\+::\+Collector$<$ T, internal\+::\+Optional$<$ T $>$, T $>$}}.
+
+\mbox{\Hypertarget{classctream_1_1collectors_1_1Min_a515972a28826ae9c3d777a8861046b4d}\label{classctream_1_1collectors_1_1Min_a515972a28826ae9c3d777a8861046b4d}} 
+\index{ctream::collectors::Min$<$ T $>$@{ctream::collectors::Min$<$ T $>$}!supply@{supply}}
+\index{supply@{supply}!ctream::collectors::Min$<$ T $>$@{ctream::collectors::Min$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{supply()}{supply()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{structctream_1_1internal_1_1Optional}{internal\+::\+Optional}}$<$T$>$ \mbox{\hyperlink{classctream_1_1collectors_1_1Min}{ctream\+::collectors\+::\+Min}}$<$ T $>$\+::supply (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+A function that provides a blank accumulator (an accumulator in the expected starting state) 
+
+\begin{DoxyReturn}{Returns}
+Accumulator\+Type A blank accumulator 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classctream_1_1collectors_1_1Collector_a3ec2276ef997e394b0bc42438dc33fa1}{ctream\+::collectors\+::\+Collector$<$ T, internal\+::\+Optional$<$ T $>$, T $>$}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/ctream.\+hpp\end{DoxyCompactItemize}

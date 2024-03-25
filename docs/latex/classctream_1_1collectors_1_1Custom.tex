@@ -1,0 +1,180 @@
+\hypertarget{classctream_1_1collectors_1_1Custom}{}\doxysection{ctream\+::collectors\+::Custom$<$ T, A, R $>$ Class Template Reference}
+\label{classctream_1_1collectors_1_1Custom}\index{ctream::collectors::Custom$<$ T, A, R $>$@{ctream::collectors::Custom$<$ T, A, R $>$}}
+
+
+Create a custom \mbox{\hyperlink{classctream_1_1collectors_1_1Collector}{Collector}} by specifying all functions implementations.  
+
+
+
+
+{\ttfamily \#include $<$ctream.\+hpp$>$}
+
+
+
+Inheritance diagram for ctream\+::collectors\+::Custom$<$ T, A, R $>$\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=200pt]{classctream_1_1collectors_1_1Custom__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for ctream\+::collectors\+::Custom$<$ T, A, R $>$\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=200pt]{classctream_1_1collectors_1_1Custom__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classctream_1_1collectors_1_1Custom_a2f43a828b2fa780b1004f00a5745ab70}\label{classctream_1_1collectors_1_1Custom_a2f43a828b2fa780b1004f00a5745ab70}} 
+using {\bfseries Input\+Type} = T
+\item 
+\mbox{\Hypertarget{classctream_1_1collectors_1_1Custom_af9874823b64f4bebcf2594044ba3c6ea}\label{classctream_1_1collectors_1_1Custom_af9874823b64f4bebcf2594044ba3c6ea}} 
+using {\bfseries Accumulator\+Type} = A
+\item 
+\mbox{\Hypertarget{classctream_1_1collectors_1_1Custom_ad1690244c281903afef9eaf37743e9f6}\label{classctream_1_1collectors_1_1Custom_ad1690244c281903afef9eaf37743e9f6}} 
+using {\bfseries Return\+Type} = R
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classctream_1_1collectors_1_1Custom_a8e9545c5fca2872c371559789c5be483}{Custom}} (const std\+::function$<$ Accumulator\+Type()$>$ \&supplier, const std\+::function$<$ void(Accumulator\+Type \&, const Input\+Type \&)$>$ \&accumulator, const std\+::function$<$ void(Accumulator\+Type \&, const Accumulator\+Type \&)$>$ \&combiner, const std\+::function$<$ Return\+Type(const Accumulator\+Type \&)$>$ \&finisher)
+\begin{DoxyCompactList}\small\item\em Construct a \mbox{\hyperlink{classctream_1_1collectors_1_1Custom}{Custom}} \mbox{\hyperlink{classctream_1_1collectors_1_1Collector}{Collector}} (see \mbox{\hyperlink{classctream_1_1collectors_1_1Collector}{Collector}}\} documentation for more information) \end{DoxyCompactList}\item 
+Accumulator\+Type \mbox{\hyperlink{classctream_1_1collectors_1_1Custom_ab6565df4541ed717a7c99f02539af3af}{supply}} () const
+\begin{DoxyCompactList}\small\item\em A function that provides a blank accumulator (an accumulator in the expected starting state) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classctream_1_1collectors_1_1Custom_a52f203684a9bd4c022b70b507ceb5964}{accumulate}} (Accumulator\+Type \&a, const Input\+Type \&b) const
+\begin{DoxyCompactList}\small\item\em Feed an element to an accumulator. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classctream_1_1collectors_1_1Custom_a4238ab3eadf8789d675392ac59ac0110}{combine}} (Accumulator\+Type \&a, Accumulator\+Type \&b) const
+\begin{DoxyCompactList}\small\item\em Feed all the content of an accumulator to another. \end{DoxyCompactList}\item 
+Return\+Type \mbox{\hyperlink{classctream_1_1collectors_1_1Custom_a3911d8278859b11d65f2c74402a31624}{finish}} (Accumulator\+Type \&a) const
+\begin{DoxyCompactList}\small\item\em Convert the final content of the accumulator into the output. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename T, typename A, typename R$>$\newline
+class ctream\+::collectors\+::\+Custom$<$ T, A, R $>$}
+
+Create a custom \mbox{\hyperlink{classctream_1_1collectors_1_1Collector}{Collector}} by specifying all functions implementations. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classctream_1_1collectors_1_1Custom_a8e9545c5fca2872c371559789c5be483}\label{classctream_1_1collectors_1_1Custom_a8e9545c5fca2872c371559789c5be483}} 
+\index{ctream::collectors::Custom$<$ T, A, R $>$@{ctream::collectors::Custom$<$ T, A, R $>$}!Custom@{Custom}}
+\index{Custom@{Custom}!ctream::collectors::Custom$<$ T, A, R $>$@{ctream::collectors::Custom$<$ T, A, R $>$}}
+\doxysubsubsection{\texorpdfstring{Custom()}{Custom()}}
+{\footnotesize\ttfamily template$<$typename T , typename A , typename R $>$ \\
+\mbox{\hyperlink{classctream_1_1collectors_1_1Custom}{ctream\+::collectors\+::\+Custom}}$<$ T, A, R $>$\+::\mbox{\hyperlink{classctream_1_1collectors_1_1Custom}{Custom}} (\begin{DoxyParamCaption}\item[{const std\+::function$<$ Accumulator\+Type()$>$ \&}]{supplier,  }\item[{const std\+::function$<$ void(Accumulator\+Type \&, const Input\+Type \&)$>$ \&}]{accumulator,  }\item[{const std\+::function$<$ void(Accumulator\+Type \&, const Accumulator\+Type \&)$>$ \&}]{combiner,  }\item[{const std\+::function$<$ Return\+Type(const Accumulator\+Type \&)$>$ \&}]{finisher }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct a \mbox{\hyperlink{classctream_1_1collectors_1_1Custom}{Custom}} \mbox{\hyperlink{classctream_1_1collectors_1_1Collector}{Collector}} (see \mbox{\hyperlink{classctream_1_1collectors_1_1Collector}{Collector}}\} documentation for more information) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em supplier} & Supplier function \\
+\hline
+{\em accumulator} & Accumulator function \\
+\hline
+{\em combiner} & Combiner function \\
+\hline
+{\em finisher} & Finisher function \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classctream_1_1collectors_1_1Custom_a52f203684a9bd4c022b70b507ceb5964}\label{classctream_1_1collectors_1_1Custom_a52f203684a9bd4c022b70b507ceb5964}} 
+\index{ctream::collectors::Custom$<$ T, A, R $>$@{ctream::collectors::Custom$<$ T, A, R $>$}!accumulate@{accumulate}}
+\index{accumulate@{accumulate}!ctream::collectors::Custom$<$ T, A, R $>$@{ctream::collectors::Custom$<$ T, A, R $>$}}
+\doxysubsubsection{\texorpdfstring{accumulate()}{accumulate()}}
+{\footnotesize\ttfamily template$<$typename T , typename A , typename R $>$ \\
+void \mbox{\hyperlink{classctream_1_1collectors_1_1Custom}{ctream\+::collectors\+::\+Custom}}$<$ T, A, R $>$\+::accumulate (\begin{DoxyParamCaption}\item[{Accumulator\+Type \&}]{a,  }\item[{const Input\+Type \&}]{b }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Feed an element to an accumulator. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & Accumulator that will receive the element \\
+\hline
+{\em b} & Element that will be fed the accumulator \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classctream_1_1collectors_1_1Collector_af3526d3da1c1ec9247f5a6a6945d42e3}{ctream\+::collectors\+::\+Collector$<$ T, A, R $>$}}.
+
+\mbox{\Hypertarget{classctream_1_1collectors_1_1Custom_a4238ab3eadf8789d675392ac59ac0110}\label{classctream_1_1collectors_1_1Custom_a4238ab3eadf8789d675392ac59ac0110}} 
+\index{ctream::collectors::Custom$<$ T, A, R $>$@{ctream::collectors::Custom$<$ T, A, R $>$}!combine@{combine}}
+\index{combine@{combine}!ctream::collectors::Custom$<$ T, A, R $>$@{ctream::collectors::Custom$<$ T, A, R $>$}}
+\doxysubsubsection{\texorpdfstring{combine()}{combine()}}
+{\footnotesize\ttfamily template$<$typename T , typename A , typename R $>$ \\
+void \mbox{\hyperlink{classctream_1_1collectors_1_1Custom}{ctream\+::collectors\+::\+Custom}}$<$ T, A, R $>$\+::combine (\begin{DoxyParamCaption}\item[{Accumulator\+Type \&}]{a,  }\item[{Accumulator\+Type \&}]{b }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Feed all the content of an accumulator to another. 
+
+Implementations can be destructive the the source accumulator (b) without risk, because b will never be used again. For large data types, it is often useful to do a move of the data from b into a.
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & Destination accumulator \\
+\hline
+{\em b} & Source accumulator \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classctream_1_1collectors_1_1Collector_ae2542ded307a3c5da3ded1000a9cb821}{ctream\+::collectors\+::\+Collector$<$ T, A, R $>$}}.
+
+\mbox{\Hypertarget{classctream_1_1collectors_1_1Custom_a3911d8278859b11d65f2c74402a31624}\label{classctream_1_1collectors_1_1Custom_a3911d8278859b11d65f2c74402a31624}} 
+\index{ctream::collectors::Custom$<$ T, A, R $>$@{ctream::collectors::Custom$<$ T, A, R $>$}!finish@{finish}}
+\index{finish@{finish}!ctream::collectors::Custom$<$ T, A, R $>$@{ctream::collectors::Custom$<$ T, A, R $>$}}
+\doxysubsubsection{\texorpdfstring{finish()}{finish()}}
+{\footnotesize\ttfamily template$<$typename T , typename A , typename R $>$ \\
+Return\+Type \mbox{\hyperlink{classctream_1_1collectors_1_1Custom}{ctream\+::collectors\+::\+Custom}}$<$ T, A, R $>$\+::finish (\begin{DoxyParamCaption}\item[{Accumulator\+Type \&}]{a }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Convert the final content of the accumulator into the output. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & Final content of the accumulator \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return\+Type Output of the collector 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classctream_1_1collectors_1_1Collector_a383e637f9f5ad9d14f2af7588586a723}{ctream\+::collectors\+::\+Collector$<$ T, A, R $>$}}.
+
+\mbox{\Hypertarget{classctream_1_1collectors_1_1Custom_ab6565df4541ed717a7c99f02539af3af}\label{classctream_1_1collectors_1_1Custom_ab6565df4541ed717a7c99f02539af3af}} 
+\index{ctream::collectors::Custom$<$ T, A, R $>$@{ctream::collectors::Custom$<$ T, A, R $>$}!supply@{supply}}
+\index{supply@{supply}!ctream::collectors::Custom$<$ T, A, R $>$@{ctream::collectors::Custom$<$ T, A, R $>$}}
+\doxysubsubsection{\texorpdfstring{supply()}{supply()}}
+{\footnotesize\ttfamily template$<$typename T , typename A , typename R $>$ \\
+Accumulator\+Type \mbox{\hyperlink{classctream_1_1collectors_1_1Custom}{ctream\+::collectors\+::\+Custom}}$<$ T, A, R $>$\+::supply (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+A function that provides a blank accumulator (an accumulator in the expected starting state) 
+
+\begin{DoxyReturn}{Returns}
+Accumulator\+Type A blank accumulator 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classctream_1_1collectors_1_1Collector_a3ec2276ef997e394b0bc42438dc33fa1}{ctream\+::collectors\+::\+Collector$<$ T, A, R $>$}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/ctream.\+hpp\end{DoxyCompactItemize}

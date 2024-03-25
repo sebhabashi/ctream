@@ -1,0 +1,239 @@
+\label{index_md_README}%
+\Hypertarget{index_md_README}%
+\hypertarget{index_autotoc_md1}{}\doxysection{What is Ctream ?}\label{index_autotoc_md1}
+Ctream is a single-\/header library that provides fast parallelized pipelines on STL containers (vector, list etc.) and emulates the \href{https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html}{\texttt{ Java Stream API}} syntax.
+
+Ctream\textquotesingle{}s main advantage is its simplicity, its speed, and its clear syntax (especially for developpers that are used to Java). Because it is a single header, it can be integrated into your project with great simplicity, either installed in your system includes, or added directly to your project.
+
+Ctream enables you to write code like this\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{// Use Ctream to get the maximum of the input integers}}
+\DoxyCodeLine{\textcolor{keyword}{auto} max = \mbox{\hyperlink{group__ctream_ga3aeb2067c3db7cfa8a27fec73caa5fb8}{ctream::toCtream}}(argv, argc)}
+\DoxyCodeLine{        .map<std::string>()}
+\DoxyCodeLine{        .filter(validInteger)}
+\DoxyCodeLine{        .map<\textcolor{keywordtype}{long}>([] (\textcolor{keyword}{const} std::string\& str) \{ \textcolor{keywordflow}{return} std::stol(str); \})}
+\DoxyCodeLine{        .max();}
+
+\end{DoxyCode}
+ In this example we\+:
+\begin{DoxyItemize}
+\item Create a Ctream pipeline from {\ttfamily int argc} et {\ttfamily char$\ast$$\ast$ argv}
+\item Cast each {\ttfamily char$\ast$} element to {\ttfamily std\+::string} using the {\ttfamily std\+::string} constructor
+\item Filter only the elements for which {\ttfamily bool valid\+Integer(const std\+::string\&)} returns {\ttfamily true}
+\item Parse each element as an integer using {\ttfamily std\+::stol}
+\item Compute the maximum of the elements
+\end{DoxyItemize}
+
+All that effortlessly!\hypertarget{index_autotoc_md2}{}\doxysection{How to get it ?}\label{index_autotoc_md2}
+Tagged releases will be available soon in the Releases section. In the meantime, you can simply download the file {\ttfamily \mbox{\hyperlink{ctream_8hpp_source}{include/ctream.\+hpp}}} and add it into your project.\hypertarget{index_autotoc_md3}{}\doxysection{How to use it ?}\label{index_autotoc_md3}
+\hypertarget{index_autotoc_md4}{}\doxysubsection{Compatibility}\label{index_autotoc_md4}
+Ctream is compatible with C++11 and higher.\hypertarget{index_autotoc_md5}{}\doxysubsection{Caution}\label{index_autotoc_md5}
+Ctream objects represent manipulation pipelines, not containers. Using Ctream objects after their data source is destroyed will result in undefined behavior.\hypertarget{index_autotoc_md6}{}\doxysubsection{Basic usage and examples}\label{index_autotoc_md6}
+\hypertarget{index_autotoc_md7}{}\doxysubsubsection{Examples}\label{index_autotoc_md7}
+Get the sum of the even numbers 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{auto} sum = ctream::toCtream<int>(...)}
+\DoxyCodeLine{        .filter([] (\textcolor{keywordtype}{int} i) \{ \textcolor{keywordflow}{return} i \% 2 == 0; \})}
+\DoxyCodeLine{        .sum();}
+
+\end{DoxyCode}
+ Get the age of the oldest person 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{auto} max = ctream::toCtream<Person>(...)}
+\DoxyCodeLine{        .extract<\textcolor{keywordtype}{int}>([] (\textcolor{keyword}{const} Person\& p) \{ \textcolor{keywordflow}{return} p.age; \})}
+\DoxyCodeLine{        .max();}
+
+\end{DoxyCode}
+ Convert a list into a vector 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{auto} list = std::list<int>(...);}
+\DoxyCodeLine{\textcolor{keyword}{auto} vect = \mbox{\hyperlink{group__ctream_ga3aeb2067c3db7cfa8a27fec73caa5fb8}{ctream::toCtream}}(list).toVector();}
+
+\end{DoxyCode}
+ Square all values in a vector 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{auto} values = std::vector<double>(...);}
+\DoxyCodeLine{\textcolor{keyword}{auto} squares = \mbox{\hyperlink{group__ctream_ga3aeb2067c3db7cfa8a27fec73caa5fb8}{ctream::toCtream}}(values)}
+\DoxyCodeLine{        .map<\textcolor{keywordtype}{double}>([] (\textcolor{keywordtype}{double} v) \{ \textcolor{keywordflow}{return} v * v; \});}
+\DoxyCodeLine{        .toVector();}
+
+\end{DoxyCode}
+\hypertarget{index_autotoc_md8}{}\doxysubsubsection{Creating a stream from a container}\label{index_autotoc_md8}
+Ctream\textquotesingle{}s can be constructed from different container types\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{std::vector<int> vec(...);}
+\DoxyCodeLine{\textcolor{keyword}{auto} vectorStream = \mbox{\hyperlink{group__ctream_ga3aeb2067c3db7cfa8a27fec73caa5fb8}{ctream::toCtream}}(vec);}
+\DoxyCodeLine{}
+\DoxyCodeLine{std::list<int> list(...);}
+\DoxyCodeLine{\textcolor{keyword}{auto} listStream = \mbox{\hyperlink{group__ctream_ga3aeb2067c3db7cfa8a27fec73caa5fb8}{ctream::toCtream}}(list);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int} raw[ARRAY\_SIZE] = \{...\};}
+\DoxyCodeLine{\textcolor{keyword}{auto} rawStream = \mbox{\hyperlink{group__ctream_ga3aeb2067c3db7cfa8a27fec73caa5fb8}{ctream::toCtream}}(raw, ARRAY\_SIZE);}
+
+\end{DoxyCode}
+\hypertarget{index_autotoc_md9}{}\doxysubsubsection{Filtering}\label{index_autotoc_md9}
+To keep only certain elements of the stream, use {\ttfamily filter}. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{// Filter only the even/odd numbers of a stream}}
+\DoxyCodeLine{\textcolor{keyword}{auto} numbers = ctream::toCtream<int>(...);}
+\DoxyCodeLine{\textcolor{keyword}{auto} evenNumbers = numbers.filter([] (\textcolor{keywordtype}{int} i) \{}
+\DoxyCodeLine{    \textcolor{keywordflow}{return} i \% 2 == 0;}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{\textcolor{keyword}{auto} oddNumbers = numbers.filter([] (\textcolor{keywordtype}{int} i) \{}
+\DoxyCodeLine{    \textcolor{keywordflow}{return} i \% 2 == 1;}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{// Filter only the strings that are not empty}}
+\DoxyCodeLine{\textcolor{keyword}{auto} strings = ctream::toCtream<std::string>(...);}
+\DoxyCodeLine{\textcolor{keyword}{auto} notEmptyStrings = strings.filter([] (\textcolor{keyword}{const} std::string\& s) \{}
+\DoxyCodeLine{    \textcolor{keywordflow}{return} !s.empty();}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{index_autotoc_md10}{}\doxysubsubsection{Extracting data}\label{index_autotoc_md10}
+To transform the data using only const references to data within the elements, use {\ttfamily extract}. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{struct }Person}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{    std::string firstName;}
+\DoxyCodeLine{    std::string lastName;}
+\DoxyCodeLine{    \textcolor{keywordtype}{int} age;}
+\DoxyCodeLine{    std::string address;}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{\textcolor{keyword}{auto} persons = ctream::toCtream<Person>(...);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{// Extract the age of every person}}
+\DoxyCodeLine{\textcolor{keyword}{auto} ages = persons.extract<\textcolor{keywordtype}{int}>([] (\textcolor{keyword}{const} Person\& p) \{}
+\DoxyCodeLine{    \textcolor{keywordflow}{return} p.age;}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{// Extract the first name of every person}}
+\DoxyCodeLine{\textcolor{keyword}{auto} firstNames = persons.extract<std::string>([] (\textcolor{keyword}{const} Person\& p) \{}
+\DoxyCodeLine{    \textcolor{keywordflow}{return} p.firstName;}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{index_autotoc_md11}{}\doxysubsubsection{Transforming (mapping) the elements}\label{index_autotoc_md11}
+When interesting data is not directly present in the elements and has to be constructed, {\ttfamily extract} cannot be used. In this case, we use {\ttfamily map}. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{struct }Person}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{    std::string firstName;}
+\DoxyCodeLine{    std::string lastName;}
+\DoxyCodeLine{    \textcolor{keywordtype}{int} age;}
+\DoxyCodeLine{    std::string address;}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{\textcolor{keyword}{auto} persons = ctream::toCtream<Person>(...);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{// Get a stream containing the full name of every person}}
+\DoxyCodeLine{\textcolor{keyword}{auto} names = persons.map<std::string>([] (\textcolor{keyword}{const} Person\& p) \{}
+\DoxyCodeLine{    \textcolor{keywordflow}{return} p.firstName + \textcolor{stringliteral}{"{} "{}} + p.lastName;}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{index_autotoc_md12}{}\doxysubsubsection{Converting back to usable data}\label{index_autotoc_md12}
+The data of the stream can be exported back to STL containers using {\ttfamily to\+List} or {\ttfamily to\+Vector}. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{auto} stream = ctream::toCtream<int>(...);}
+\DoxyCodeLine{std::list<int> list = stream.toList();}
+\DoxyCodeLine{std::vector<int> vect = stream.toVector();}
+
+\end{DoxyCode}
+ It can also be reduced with common operations\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{auto} stream = ctream::toCtream<int>(...);}
+\DoxyCodeLine{\textcolor{keyword}{auto} sum = stream.sum(); \textcolor{comment}{// Compute the sum}}
+\DoxyCodeLine{\textcolor{keyword}{auto} prod = stream.product(); \textcolor{comment}{// Compute the product}}
+\DoxyCodeLine{\textcolor{keyword}{auto} min = stream.min(); \textcolor{comment}{// Get the minimum}}
+\DoxyCodeLine{\textcolor{keyword}{auto} max = stream.max(); \textcolor{comment}{// Get the maximum}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{auto} strings = ctream::toCtream<std::string>(...);}
+\DoxyCodeLine{\textcolor{keyword}{auto} concat = strings.concat(); \textcolor{comment}{// Concatenates all strings}}
+
+\end{DoxyCode}
+ For other operations, it is necessary to use Collectors.\hypertarget{index_autotoc_md13}{}\doxysubsubsection{Using Collectors}\label{index_autotoc_md13}
+Collectors are the way data is exported from a stream. In fact, all previous exporters are just shorthands for Collectors\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{auto} stream = ctream::toCtream<int>(...);}
+\DoxyCodeLine{std::list<int> list = stream.collect(collectors::ToList<int>\{\});}
+\DoxyCodeLine{std::vector<int> vect = stream.collect(collectors::ToVector<int>\{\});}
+\DoxyCodeLine{\textcolor{keyword}{auto} sum = stream.collect(collectors::Sum<int>\{\});}
+\DoxyCodeLine{\textcolor{keyword}{auto} prod = stream.collect(collectors::Product<int>\{\});}
+\DoxyCodeLine{\textcolor{keyword}{auto} min = stream.collect(collectors::Min<int>\{\});}
+\DoxyCodeLine{\textcolor{keyword}{auto} max = stream.collect(collectors::Max<int>\{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{auto} strings = ctream::toCtream<std::string>(...);}
+\DoxyCodeLine{\textcolor{keyword}{auto} concat = strings.collect(collectors::Concat<std::string>\{\});}
+
+\end{DoxyCode}
+ To create specific collectors, the templated interface {\ttfamily Collector$<$T, A, R$>$} must be implemented with\+:
+\begin{DoxyItemize}
+\item T being the input type
+\item A being the accumulator type (see below, often the same as R)
+\item R being the result type
+\end{DoxyItemize}
+
+Collectors are objects that contain information on how to export the data from the streams into usable output data. Their aim is to have a simple syntax, and to be parallelized easily.
+
+The logic behind collectors is to {\ttfamily accumulate()} the elements of type T of the stream in to partial results of type A. These partial results are then combined into a complete result of type A with function {\ttfamily combine()}. This complete result is finally converted into the final output result of type R by function {\ttfamily finish()}.
+
+Using a different type for A and R is not always necessary, but it can sometimes be very useful. For instance, to concatenate strings, a solution to avoid copying strings endlessly (the one used in this library) is to use stringstream objects as accumulators, and then finish by extracting the string from the stringstream.
+
+For instance, the {\ttfamily Sum} collector, where A and R are identical, is defined as follows\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{// Sum up all the elements of the stream}}
+\DoxyCodeLine{\textcolor{keyword}{template}<\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{\textcolor{keyword}{class }Sum : \textcolor{keyword}{public} Collector<T, T, T>}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\textcolor{keyword}{public}:}
+\DoxyCodeLine{    T supply()\textcolor{keyword}{ const override }\{ \textcolor{keywordflow}{return} 0; \}}
+\DoxyCodeLine{    \textcolor{keywordtype}{void} accumulate(T\& a, \textcolor{keyword}{const} T\& b)\textcolor{keyword}{ const override }\{ a += b; \};}
+\DoxyCodeLine{    \textcolor{keywordtype}{void} combine(T\& a, T\& b)\textcolor{keyword}{ const override }\{ a += b; \};}
+\DoxyCodeLine{    T finish(T\& a)\textcolor{keyword}{ const override }\{ \textcolor{keywordflow}{return} a; \}}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+ Alternatively, the {\ttfamily Concat} collector uses different types for A (stringstream) and R (string)\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{// Concatenate the elements of the stream into a string}}
+\DoxyCodeLine{\textcolor{keyword}{template}<\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{\textcolor{keyword}{class }Concat : \textcolor{keyword}{public} Collector<T, std::stringstream, std::string>}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\textcolor{keyword}{public}:}
+\DoxyCodeLine{    std::stringstream supply()\textcolor{keyword}{ const override}}
+\DoxyCodeLine{\textcolor{keyword}{    }\{}
+\DoxyCodeLine{        \textcolor{keywordflow}{return} std::stringstream\{\};}
+\DoxyCodeLine{    \}}
+\DoxyCodeLine{    \textcolor{keywordtype}{void} accumulate(std::stringstream\& a, \textcolor{keyword}{const} T\& b)\textcolor{keyword}{ const override}}
+\DoxyCodeLine{\textcolor{keyword}{    }\{}
+\DoxyCodeLine{        a << b;}
+\DoxyCodeLine{    \}}
+\DoxyCodeLine{    \textcolor{keywordtype}{void} combine(std::stringstream\& a, std::stringstream\& b)\textcolor{keyword}{ const override}}
+\DoxyCodeLine{\textcolor{keyword}{    }\{}
+\DoxyCodeLine{        a << b.str();}
+\DoxyCodeLine{    \}}
+\DoxyCodeLine{    std::string finish(std::stringstream\& a)\textcolor{keyword}{ const override}}
+\DoxyCodeLine{\textcolor{keyword}{    }\{}
+\DoxyCodeLine{        \textcolor{keywordflow}{return} a.str();}
+\DoxyCodeLine{    \}}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+ Collectors can be \char`\"{}implemented\char`\"{} inline using the {\ttfamily Custom} collector\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{auto} intSumCollector = collector::Custom<int, int, int>(}
+\DoxyCodeLine{        [] () \{ \textcolor{keywordflow}{return} 0; \}, \textcolor{comment}{// supplier}}
+\DoxyCodeLine{        [] (\textcolor{keywordtype}{int}\& a, \textcolor{keywordtype}{int} b) \{ a+= b \}, \textcolor{comment}{// accumulator}}
+\DoxyCodeLine{        [] (\textcolor{keywordtype}{int}\& a, \textcolor{keywordtype}{int}\& b) \{ a+= b \}, \textcolor{comment}{// combiner}}
+\DoxyCodeLine{        [] (\textcolor{keywordtype}{int} a) \{ \textcolor{keywordflow}{return} a; \}); \textcolor{comment}{// finisher}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{auto} sum = ctream::toCtream<int>(...).collect(intSumCollector);}
+
+\end{DoxyCode}
+\hypertarget{index_autotoc_md14}{}\doxysection{Examples}\label{index_autotoc_md14}
+Examples are available in directory {\ttfamily examples}, and more should come.\hypertarget{index_autotoc_md15}{}\doxysection{API documentation}\label{index_autotoc_md15}
+Complete documentation can be found in the {\ttfamily docs} directory, and can be regenerated using Doxygen. Interesting entry points can be\+:
+\begin{DoxyItemize}
+\item The \href{https://htmlpreview.github.io/?https://github.com/sebhabashi/ctream/blob/main/docs/html/group__ctream.html}{\texttt{ CStream class documentation}} ({\ttfamily ctream\+::\+Ctream$<$T$>$})
+\item The \href{https://htmlpreview.github.io/?https://github.com/sebhabashi/ctream/blob/main/docs/html/group__collectors.html}{\texttt{ Collector API}} ({\ttfamily ctream\+::collectors}) 
+\end{DoxyItemize}

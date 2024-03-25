@@ -1,0 +1,366 @@
+\hypertarget{classctream_1_1internal_1_1Ctream}{}\doxysection{ctream\+::internal\+::Ctream$<$ T $>$ Class Template Reference}
+\label{classctream_1_1internal_1_1Ctream}\index{ctream::internal::Ctream$<$ T $>$@{ctream::internal::Ctream$<$ T $>$}}
+
+
+Pipeline for data manipulation.  
+
+
+
+
+{\ttfamily \#include $<$ctream.\+hpp$>$}
+
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classctream_1_1internal_1_1Ctream_a302c54c899d90e7486cbafd9ab13afe3}\label{classctream_1_1internal_1_1Ctream_a302c54c899d90e7486cbafd9ab13afe3}} 
+using {\bfseries Source\+Data\+Retriever} = std\+::function$<$ void const  $\ast$(size\+\_\+t)$>$
+\item 
+\mbox{\Hypertarget{classctream_1_1internal_1_1Ctream_ad56de1fdfc524603adc21fc7e04c2b31}\label{classctream_1_1internal_1_1Ctream_ad56de1fdfc524603adc21fc7e04c2b31}} 
+using {\bfseries Pipeline\+Step} = std\+::function$<$ void const  $\ast$(void const  $\ast$)$>$
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classctream_1_1internal_1_1Ctream_a96d929b820f647808e0f288a5a856c07}\label{classctream_1_1internal_1_1Ctream_a96d929b820f647808e0f288a5a856c07}} 
+{\bfseries Ctream} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classctream_1_1internal_1_1BasicArena}{Arena}} $>$ arena, size\+\_\+t container\+Size, const Source\+Data\+Retriever \&source\+Data, const std\+::vector$<$ Pipeline\+Step $>$ \&previous\+Pipeline, const Pipeline\+Step \&new\+Pipeline\+Step)
+\end{DoxyCompactItemize}
+\begin{Indent}\textbf{ Create from STL containers}\par
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classctream_1_1internal_1_1Ctream_a115753b784719a1f38fc707c00f25056}{Ctream}} (const std\+::vector$<$ T $>$ \&values)
+\begin{DoxyCompactList}\small\item\em Construct from a vector. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classctream_1_1internal_1_1Ctream_ada81710c3c2984631f4321daddabf8a8}{Ctream}} (const std\+::list$<$ T $>$ \&values)
+\begin{DoxyCompactList}\small\item\em Construct from a list. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classctream_1_1internal_1_1Ctream_a8847bea0775fe98ff54752c8272e5108}{Ctream}} (const T $\ast$values, size\+\_\+t size)
+\begin{DoxyCompactList}\small\item\em Construct from a C array. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Manipulate the data in the stream}\par
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classctream_1_1internal_1_1Ctream}{Ctream}}$<$ T $>$ \mbox{\hyperlink{classctream_1_1internal_1_1Ctream_a7df3433014df9bea66c2cf17d21c5527}{filter}} (const std\+::function$<$ bool(const T \&)$>$ filter) const
+\begin{DoxyCompactList}\small\item\em Remove from the stream the elements that do not match a filter. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename U $>$ }\\\mbox{\hyperlink{classctream_1_1internal_1_1Ctream}{Ctream}}$<$ U $>$ \mbox{\hyperlink{classctream_1_1internal_1_1Ctream_a150e3b11243da7ab3d6ec4b88a6d9981}{extract}} (const std\+::function$<$ const U \&(const T \&)$>$ \&extractor) const
+\begin{DoxyCompactList}\small\item\em Extract data from the elements of the stream. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename U $>$ }\\\mbox{\hyperlink{classctream_1_1internal_1_1Ctream}{Ctream}}$<$ U $>$ \mbox{\hyperlink{classctream_1_1internal_1_1Ctream_a9f3602e034be80a9cb6ca69901e72b4c}{map}} (const std\+::function$<$ U(const T \&)$>$ \&mapper) const
+\begin{DoxyCompactList}\small\item\em Transform the data from the elements in the stream. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename U $>$ }\\\mbox{\hyperlink{classctream_1_1internal_1_1Ctream}{Ctream}}$<$ U $>$ \mbox{\hyperlink{classctream_1_1internal_1_1Ctream_ab85645fffdd3b1e56ac4b1801a9e26dc}{map}} () const
+\begin{DoxyCompactList}\small\item\em Cast the elements of the stream into a new type by construction. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Output the streamed data}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename A , typename R  = A$>$ }\\R \mbox{\hyperlink{classctream_1_1internal_1_1Ctream_aaf3d9994fdde65da2da7eefae24eda73}{collect}} (const \mbox{\hyperlink{classctream_1_1collectors_1_1Collector}{collectors\+::\+Collector}}$<$ T, A, R $>$ \&collector) const
+\begin{DoxyCompactList}\small\item\em Use a Collector to extract usable data from the stream. \end{DoxyCompactList}\item 
+T \mbox{\hyperlink{classctream_1_1internal_1_1Ctream_adf0af90e711ce20e7a26ca2eafe78366}{sum}} () const
+\begin{DoxyCompactList}\small\item\em Get the sum of the elements in the stream. \end{DoxyCompactList}\item 
+T \mbox{\hyperlink{classctream_1_1internal_1_1Ctream_a1a5d38c0107e54971bf66e0800951e63}{min}} () const
+\begin{DoxyCompactList}\small\item\em Get the minimum of the elements in the stream. \end{DoxyCompactList}\item 
+T \mbox{\hyperlink{classctream_1_1internal_1_1Ctream_a808246c4fdce1a1f91f8b33695947385}{max}} () const
+\begin{DoxyCompactList}\small\item\em Get the maximum of the elements in the stream. \end{DoxyCompactList}\item 
+T \mbox{\hyperlink{classctream_1_1internal_1_1Ctream_aadb0b369f3e5f2b2f69206480c251bac}{product}} () const
+\begin{DoxyCompactList}\small\item\em Get the product of the elements in the stream. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classctream_1_1internal_1_1Ctream_ac6b77306ef95685336590bf0e26638e0}{concat}} () const
+\begin{DoxyCompactList}\small\item\em Get a string that concatenates all elements in the stream. \end{DoxyCompactList}\item 
+std\+::list$<$ T $>$ \mbox{\hyperlink{classctream_1_1internal_1_1Ctream_a52131d2c4ffb5ea0a35e2422952e076d}{to\+List}} () const
+\begin{DoxyCompactList}\small\item\em Get a list containing the elements in the stream. \end{DoxyCompactList}\item 
+std\+::vector$<$ T $>$ \mbox{\hyperlink{classctream_1_1internal_1_1Ctream_acfff37b05cc2c4bf6c3f144fea9fdcb5}{to\+Vector}} () const
+\begin{DoxyCompactList}\small\item\em Get a vector containing the elements in the stream. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$\newline
+class ctream\+::internal\+::\+Ctream$<$ T $>$}
+
+Pipeline for data manipulation. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Type of the streamed elements \\
+\hline
+\end{DoxyTemplParams}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classctream_1_1internal_1_1Ctream_a115753b784719a1f38fc707c00f25056}\label{classctream_1_1internal_1_1Ctream_a115753b784719a1f38fc707c00f25056}} 
+\index{ctream::internal::Ctream$<$ T $>$@{ctream::internal::Ctream$<$ T $>$}!Ctream@{Ctream}}
+\index{Ctream@{Ctream}!ctream::internal::Ctream$<$ T $>$@{ctream::internal::Ctream$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Ctream()}{Ctream()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classctream_1_1internal_1_1Ctream}{ctream\+::internal\+::\+Ctream}}$<$ T $>$\+::\mbox{\hyperlink{classctream_1_1internal_1_1Ctream}{Ctream}} (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ T $>$ \&}]{values }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct from a vector. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em values} & Vector containing the values to stream \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classctream_1_1internal_1_1Ctream_ada81710c3c2984631f4321daddabf8a8}\label{classctream_1_1internal_1_1Ctream_ada81710c3c2984631f4321daddabf8a8}} 
+\index{ctream::internal::Ctream$<$ T $>$@{ctream::internal::Ctream$<$ T $>$}!Ctream@{Ctream}}
+\index{Ctream@{Ctream}!ctream::internal::Ctream$<$ T $>$@{ctream::internal::Ctream$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Ctream()}{Ctream()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classctream_1_1internal_1_1Ctream}{ctream\+::internal\+::\+Ctream}}$<$ T $>$\+::\mbox{\hyperlink{classctream_1_1internal_1_1Ctream}{Ctream}} (\begin{DoxyParamCaption}\item[{const std\+::list$<$ T $>$ \&}]{values }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct from a list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em values} & List containing the values to stream \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classctream_1_1internal_1_1Ctream_a8847bea0775fe98ff54752c8272e5108}\label{classctream_1_1internal_1_1Ctream_a8847bea0775fe98ff54752c8272e5108}} 
+\index{ctream::internal::Ctream$<$ T $>$@{ctream::internal::Ctream$<$ T $>$}!Ctream@{Ctream}}
+\index{Ctream@{Ctream}!ctream::internal::Ctream$<$ T $>$@{ctream::internal::Ctream$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Ctream()}{Ctream()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classctream_1_1internal_1_1Ctream}{ctream\+::internal\+::\+Ctream}}$<$ T $>$\+::\mbox{\hyperlink{classctream_1_1internal_1_1Ctream}{Ctream}} (\begin{DoxyParamCaption}\item[{const T $\ast$}]{values,  }\item[{size\+\_\+t}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct from a C array. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em values} & Array containing the values to stream \\
+\hline
+{\em size} & Number of elements in the array \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classctream_1_1internal_1_1Ctream_aaf3d9994fdde65da2da7eefae24eda73}\label{classctream_1_1internal_1_1Ctream_aaf3d9994fdde65da2da7eefae24eda73}} 
+\index{ctream::internal::Ctream$<$ T $>$@{ctream::internal::Ctream$<$ T $>$}!collect@{collect}}
+\index{collect@{collect}!ctream::internal::Ctream$<$ T $>$@{ctream::internal::Ctream$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{collect()}{collect()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+template$<$typename A , typename R  = A$>$ \\
+R \mbox{\hyperlink{classctream_1_1internal_1_1Ctream}{ctream\+::internal\+::\+Ctream}}$<$ T $>$\+::collect (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classctream_1_1collectors_1_1Collector}{collectors\+::\+Collector}}$<$ T, A, R $>$ \&}]{collector }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Use a Collector to extract usable data from the stream. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em A} & Type of the collector\textquotesingle{}s accumulator (see Collector\} for more info) \\
+\hline
+{\em R} & Output type \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em collector} & Collector \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+R Output data 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classctream_1_1internal_1_1Ctream_ac6b77306ef95685336590bf0e26638e0}\label{classctream_1_1internal_1_1Ctream_ac6b77306ef95685336590bf0e26638e0}} 
+\index{ctream::internal::Ctream$<$ T $>$@{ctream::internal::Ctream$<$ T $>$}!concat@{concat}}
+\index{concat@{concat}!ctream::internal::Ctream$<$ T $>$@{ctream::internal::Ctream$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{concat()}{concat()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+std\+::string \mbox{\hyperlink{classctream_1_1internal_1_1Ctream}{ctream\+::internal\+::\+Ctream}}$<$ T $>$\+::concat (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get a string that concatenates all elements in the stream. 
+
+Only for elements that can be fed to an ostream
+
+\begin{DoxyReturn}{Returns}
+std\+::string Concatenated string 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classctream_1_1internal_1_1Ctream_a150e3b11243da7ab3d6ec4b88a6d9981}\label{classctream_1_1internal_1_1Ctream_a150e3b11243da7ab3d6ec4b88a6d9981}} 
+\index{ctream::internal::Ctream$<$ T $>$@{ctream::internal::Ctream$<$ T $>$}!extract@{extract}}
+\index{extract@{extract}!ctream::internal::Ctream$<$ T $>$@{ctream::internal::Ctream$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{extract()}{extract()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+template$<$typename U $>$ \\
+\mbox{\hyperlink{classctream_1_1internal_1_1Ctream}{Ctream}}$<$U$>$ \mbox{\hyperlink{classctream_1_1internal_1_1Ctream}{ctream\+::internal\+::\+Ctream}}$<$ T $>$\+::extract (\begin{DoxyParamCaption}\item[{const std\+::function$<$ const U \&(const T \&)$>$ \&}]{extractor }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Extract data from the elements of the stream. 
+
+When the data can be extracted by reference from the elements, this is better than map\} because is does not copy and construct new elements
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em U} & The type of the extracted data \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em extractor} & A function that, given an element of the stream, returns a const reference to type U data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classctream_1_1internal_1_1Ctream}{Ctream}}\uline{ A stream with the extracted data }
+\end{DoxyReturn}
+\mbox{\Hypertarget{classctream_1_1internal_1_1Ctream_a7df3433014df9bea66c2cf17d21c5527}\label{classctream_1_1internal_1_1Ctream_a7df3433014df9bea66c2cf17d21c5527}} 
+\index{ctream::internal::Ctream$<$ T $>$@{ctream::internal::Ctream$<$ T $>$}!filter@{filter}}
+\index{filter@{filter}!ctream::internal::Ctream$<$ T $>$@{ctream::internal::Ctream$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{filter()}{filter()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classctream_1_1internal_1_1Ctream}{Ctream}}$<$T$>$ \mbox{\hyperlink{classctream_1_1internal_1_1Ctream}{ctream\+::internal\+::\+Ctream}}$<$ T $>$\+::filter (\begin{DoxyParamCaption}\item[{const std\+::function$<$ bool(const T \&)$>$}]{filter }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Remove from the stream the elements that do not match a filter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filter} & A condition on a stream element. The element remains in the stream if and only if it matches the filter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Ctream$<$\+T$>$ A stream with only the filtered data 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classctream_1_1internal_1_1Ctream_ab85645fffdd3b1e56ac4b1801a9e26dc}\label{classctream_1_1internal_1_1Ctream_ab85645fffdd3b1e56ac4b1801a9e26dc}} 
+\index{ctream::internal::Ctream$<$ T $>$@{ctream::internal::Ctream$<$ T $>$}!map@{map}}
+\index{map@{map}!ctream::internal::Ctream$<$ T $>$@{ctream::internal::Ctream$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{map()}{map()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+template$<$typename U $>$ \\
+\mbox{\hyperlink{classctream_1_1internal_1_1Ctream}{Ctream}}$<$U$>$ \mbox{\hyperlink{classctream_1_1internal_1_1Ctream}{ctream\+::internal\+::\+Ctream}}$<$ T $>$\+::map (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Cast the elements of the stream into a new type by construction. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em U} & The type of the transformed data \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classctream_1_1internal_1_1Ctream}{Ctream}}\uline{ A stream with the transformed data }
+\end{DoxyReturn}
+\mbox{\Hypertarget{classctream_1_1internal_1_1Ctream_a9f3602e034be80a9cb6ca69901e72b4c}\label{classctream_1_1internal_1_1Ctream_a9f3602e034be80a9cb6ca69901e72b4c}} 
+\index{ctream::internal::Ctream$<$ T $>$@{ctream::internal::Ctream$<$ T $>$}!map@{map}}
+\index{map@{map}!ctream::internal::Ctream$<$ T $>$@{ctream::internal::Ctream$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{map()}{map()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+template$<$typename U $>$ \\
+\mbox{\hyperlink{classctream_1_1internal_1_1Ctream}{Ctream}}$<$U$>$ \mbox{\hyperlink{classctream_1_1internal_1_1Ctream}{ctream\+::internal\+::\+Ctream}}$<$ T $>$\+::map (\begin{DoxyParamCaption}\item[{const std\+::function$<$ U(const T \&)$>$ \&}]{mapper }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Transform the data from the elements in the stream. 
+
+If the mapper you want to use can return a const reference, it is preferable to use extract\} instead to avoid overhead
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em U} & The type of the transformed data \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em mapper} & A function that, given an element of the stream, returns an element of type U \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classctream_1_1internal_1_1Ctream}{Ctream}}\uline{ A stream with the transformed data }
+\end{DoxyReturn}
+\mbox{\Hypertarget{classctream_1_1internal_1_1Ctream_a808246c4fdce1a1f91f8b33695947385}\label{classctream_1_1internal_1_1Ctream_a808246c4fdce1a1f91f8b33695947385}} 
+\index{ctream::internal::Ctream$<$ T $>$@{ctream::internal::Ctream$<$ T $>$}!max@{max}}
+\index{max@{max}!ctream::internal::Ctream$<$ T $>$@{ctream::internal::Ctream$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{max()}{max()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \mbox{\hyperlink{classctream_1_1internal_1_1Ctream}{ctream\+::internal\+::\+Ctream}}$<$ T $>$\+::max (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the maximum of the elements in the stream. 
+
+\begin{DoxyReturn}{Returns}
+T Maximum of the elements 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classctream_1_1internal_1_1Ctream_a1a5d38c0107e54971bf66e0800951e63}\label{classctream_1_1internal_1_1Ctream_a1a5d38c0107e54971bf66e0800951e63}} 
+\index{ctream::internal::Ctream$<$ T $>$@{ctream::internal::Ctream$<$ T $>$}!min@{min}}
+\index{min@{min}!ctream::internal::Ctream$<$ T $>$@{ctream::internal::Ctream$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{min()}{min()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \mbox{\hyperlink{classctream_1_1internal_1_1Ctream}{ctream\+::internal\+::\+Ctream}}$<$ T $>$\+::min (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the minimum of the elements in the stream. 
+
+\begin{DoxyReturn}{Returns}
+T Minimum of the elements 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classctream_1_1internal_1_1Ctream_aadb0b369f3e5f2b2f69206480c251bac}\label{classctream_1_1internal_1_1Ctream_aadb0b369f3e5f2b2f69206480c251bac}} 
+\index{ctream::internal::Ctream$<$ T $>$@{ctream::internal::Ctream$<$ T $>$}!product@{product}}
+\index{product@{product}!ctream::internal::Ctream$<$ T $>$@{ctream::internal::Ctream$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{product()}{product()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \mbox{\hyperlink{classctream_1_1internal_1_1Ctream}{ctream\+::internal\+::\+Ctream}}$<$ T $>$\+::product (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the product of the elements in the stream. 
+
+Only for elements that are constructible from {\ttfamily 1} and implement product
+
+\begin{DoxyReturn}{Returns}
+T Product of the elements 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classctream_1_1internal_1_1Ctream_adf0af90e711ce20e7a26ca2eafe78366}\label{classctream_1_1internal_1_1Ctream_adf0af90e711ce20e7a26ca2eafe78366}} 
+\index{ctream::internal::Ctream$<$ T $>$@{ctream::internal::Ctream$<$ T $>$}!sum@{sum}}
+\index{sum@{sum}!ctream::internal::Ctream$<$ T $>$@{ctream::internal::Ctream$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{sum()}{sum()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \mbox{\hyperlink{classctream_1_1internal_1_1Ctream}{ctream\+::internal\+::\+Ctream}}$<$ T $>$\+::sum (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the sum of the elements in the stream. 
+
+Only for elements that are default-\/constructible and implement addition For strings, use concat\} instead for better performance
+
+\begin{DoxyReturn}{Returns}
+T Sum of the elements 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classctream_1_1internal_1_1Ctream_a52131d2c4ffb5ea0a35e2422952e076d}\label{classctream_1_1internal_1_1Ctream_a52131d2c4ffb5ea0a35e2422952e076d}} 
+\index{ctream::internal::Ctream$<$ T $>$@{ctream::internal::Ctream$<$ T $>$}!toList@{toList}}
+\index{toList@{toList}!ctream::internal::Ctream$<$ T $>$@{ctream::internal::Ctream$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{toList()}{toList()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+std\+::list$<$T$>$ \mbox{\hyperlink{classctream_1_1internal_1_1Ctream}{ctream\+::internal\+::\+Ctream}}$<$ T $>$\+::to\+List (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get a list containing the elements in the stream. 
+
+\begin{DoxyReturn}{Returns}
+std\+::list$<$\+T$>$ Output list 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classctream_1_1internal_1_1Ctream_acfff37b05cc2c4bf6c3f144fea9fdcb5}\label{classctream_1_1internal_1_1Ctream_acfff37b05cc2c4bf6c3f144fea9fdcb5}} 
+\index{ctream::internal::Ctream$<$ T $>$@{ctream::internal::Ctream$<$ T $>$}!toVector@{toVector}}
+\index{toVector@{toVector}!ctream::internal::Ctream$<$ T $>$@{ctream::internal::Ctream$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{toVector()}{toVector()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+std\+::vector$<$T$>$ \mbox{\hyperlink{classctream_1_1internal_1_1Ctream}{ctream\+::internal\+::\+Ctream}}$<$ T $>$\+::to\+Vector (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get a vector containing the elements in the stream. 
+
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$\+T$>$ Output vector 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/ctream.\+hpp\end{DoxyCompactItemize}

@@ -1,0 +1,74 @@
+\hypertarget{group__ctream}{}\doxysection{Ctream API}
+\label{group__ctream}\index{Ctream API@{Ctream API}}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classctream_1_1internal_1_1Ctream}{ctream\+::internal\+::\+Ctream$<$ T $>$}}
+\begin{DoxyCompactList}\small\item\em Pipeline for data manipulation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T $>$ }\\\mbox{\hyperlink{classctream_1_1internal_1_1Ctream}{internal\+::\+Ctream}}$<$ T $>$ \mbox{\hyperlink{group__ctream_ga3aeb2067c3db7cfa8a27fec73caa5fb8}{ctream\+::to\+Ctream}} (const std\+::vector$<$ T $>$ \&vec)
+\begin{DoxyCompactList}\small\item\em Stream a vector. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\\mbox{\hyperlink{classctream_1_1internal_1_1Ctream}{internal\+::\+Ctream}}$<$ T $>$ \mbox{\hyperlink{group__ctream_ga5d8bc8860e72dafd7ca325e17bfabd63}{ctream\+::to\+Ctream}} (const std\+::list$<$ T $>$ \&list)
+\begin{DoxyCompactList}\small\item\em Stream a list. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\\mbox{\hyperlink{classctream_1_1internal_1_1Ctream}{internal\+::\+Ctream}}$<$ T $>$ \mbox{\hyperlink{group__ctream_ga540b863f292f82ddafd8365aeff520ed}{ctream\+::to\+Ctream}} (const T $\ast$array, size\+\_\+t size)
+\begin{DoxyCompactList}\small\item\em Stream a C array. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This group contains templated class \mbox{\hyperlink{classctream_1_1internal_1_1Ctream}{Ctream}} which is the entrypoint of this library.
+
+\mbox{\hyperlink{classctream_1_1internal_1_1Ctream}{Ctream}} provides a clear syntax and parallelized implementation for inline data manipulation. \mbox{\hyperlink{classctream_1_1internal_1_1Ctream}{Ctream}} objects can be created using diverse STL containers as source, then modified through data mapping extraction and filtering, and then exported using Collector\} objects into usable types. 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{group__ctream_ga5d8bc8860e72dafd7ca325e17bfabd63}\label{group__ctream_ga5d8bc8860e72dafd7ca325e17bfabd63}} 
+\index{Ctream API@{Ctream API}!toCtream@{toCtream}}
+\index{toCtream@{toCtream}!Ctream API@{Ctream API}}
+\doxysubsubsection{\texorpdfstring{toCtream()}{toCtream()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classctream_1_1internal_1_1Ctream}{internal\+::\+Ctream}}$<$T$>$ ctream\+::to\+Ctream (\begin{DoxyParamCaption}\item[{const std\+::list$<$ T $>$ \&}]{list }\end{DoxyParamCaption})}
+
+
+
+Stream a list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em values} & List containing the values to stream \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{group__ctream_ga3aeb2067c3db7cfa8a27fec73caa5fb8}\label{group__ctream_ga3aeb2067c3db7cfa8a27fec73caa5fb8}} 
+\index{Ctream API@{Ctream API}!toCtream@{toCtream}}
+\index{toCtream@{toCtream}!Ctream API@{Ctream API}}
+\doxysubsubsection{\texorpdfstring{toCtream()}{toCtream()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classctream_1_1internal_1_1Ctream}{internal\+::\+Ctream}}$<$T$>$ ctream\+::to\+Ctream (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ T $>$ \&}]{vec }\end{DoxyParamCaption})}
+
+
+
+Stream a vector. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em values} & Vector containing the values to stream \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{group__ctream_ga540b863f292f82ddafd8365aeff520ed}\label{group__ctream_ga540b863f292f82ddafd8365aeff520ed}} 
+\index{Ctream API@{Ctream API}!toCtream@{toCtream}}
+\index{toCtream@{toCtream}!Ctream API@{Ctream API}}
+\doxysubsubsection{\texorpdfstring{toCtream()}{toCtream()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classctream_1_1internal_1_1Ctream}{internal\+::\+Ctream}}$<$T$>$ ctream\+::to\+Ctream (\begin{DoxyParamCaption}\item[{const T $\ast$}]{array,  }\item[{size\+\_\+t}]{size }\end{DoxyParamCaption})}
+
+
+
+Stream a C array. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em values} & Array containing the values to stream \\
+\hline
+{\em size} & Number of elements in the array \\
+\hline
+\end{DoxyParams}

@@ -1,0 +1,142 @@
+\hypertarget{classctream_1_1collectors_1_1ToList}{}\doxysection{ctream\+::collectors\+::To\+List$<$ T $>$ Class Template Reference}
+\label{classctream_1_1collectors_1_1ToList}\index{ctream::collectors::ToList$<$ T $>$@{ctream::collectors::ToList$<$ T $>$}}
+
+
+Get a list containing the elements of the stream.  
+
+
+
+
+{\ttfamily \#include $<$ctream.\+hpp$>$}
+
+
+
+Inheritance diagram for ctream\+::collectors\+::To\+List$<$ T $>$\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=188pt]{classctream_1_1collectors_1_1ToList__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for ctream\+::collectors\+::To\+List$<$ T $>$\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=188pt]{classctream_1_1collectors_1_1ToList__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::list$<$ T $>$ \mbox{\hyperlink{classctream_1_1collectors_1_1ToList_a829261b50cc84c0d40ffd416157367c4}{supply}} () const override
+\begin{DoxyCompactList}\small\item\em A function that provides a blank accumulator (an accumulator in the expected starting state) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classctream_1_1collectors_1_1ToList_a95730ce1108ebbc9c5dc491484a69979}{accumulate}} (std\+::list$<$ T $>$ \&a, const T \&b) const override
+\begin{DoxyCompactList}\small\item\em Feed an element to an accumulator. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classctream_1_1collectors_1_1ToList_aa8c089c567b38b45461e82681de5fe71}{combine}} (std\+::list$<$ T $>$ \&a, std\+::list$<$ T $>$ \&b) const override
+\begin{DoxyCompactList}\small\item\em Feed all the content of an accumulator to another. \end{DoxyCompactList}\item 
+std\+::list$<$ T $>$ \mbox{\hyperlink{classctream_1_1collectors_1_1ToList_ad687158109ff2ef189928d4455e7ff80}{finish}} (std\+::list$<$ T $>$ \&a) const override
+\begin{DoxyCompactList}\small\item\em Convert the final content of the accumulator into the output. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$\newline
+class ctream\+::collectors\+::\+To\+List$<$ T $>$}
+
+Get a list containing the elements of the stream. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classctream_1_1collectors_1_1ToList_a95730ce1108ebbc9c5dc491484a69979}\label{classctream_1_1collectors_1_1ToList_a95730ce1108ebbc9c5dc491484a69979}} 
+\index{ctream::collectors::ToList$<$ T $>$@{ctream::collectors::ToList$<$ T $>$}!accumulate@{accumulate}}
+\index{accumulate@{accumulate}!ctream::collectors::ToList$<$ T $>$@{ctream::collectors::ToList$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{accumulate()}{accumulate()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{classctream_1_1collectors_1_1ToList}{ctream\+::collectors\+::\+To\+List}}$<$ T $>$\+::accumulate (\begin{DoxyParamCaption}\item[{std\+::list$<$ T $>$ \&}]{a,  }\item[{const T \&}]{b }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Feed an element to an accumulator. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & Accumulator that will receive the element \\
+\hline
+{\em b} & Element that will be fed the accumulator \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classctream_1_1collectors_1_1Collector_af3526d3da1c1ec9247f5a6a6945d42e3}{ctream\+::collectors\+::\+Collector$<$ T, std\+::list$<$ T $>$, std\+::list$<$ T $>$ $>$}}.
+
+\mbox{\Hypertarget{classctream_1_1collectors_1_1ToList_aa8c089c567b38b45461e82681de5fe71}\label{classctream_1_1collectors_1_1ToList_aa8c089c567b38b45461e82681de5fe71}} 
+\index{ctream::collectors::ToList$<$ T $>$@{ctream::collectors::ToList$<$ T $>$}!combine@{combine}}
+\index{combine@{combine}!ctream::collectors::ToList$<$ T $>$@{ctream::collectors::ToList$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{combine()}{combine()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{classctream_1_1collectors_1_1ToList}{ctream\+::collectors\+::\+To\+List}}$<$ T $>$\+::combine (\begin{DoxyParamCaption}\item[{std\+::list$<$ T $>$ \&}]{a,  }\item[{std\+::list$<$ T $>$ \&}]{b }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Feed all the content of an accumulator to another. 
+
+Implementations can be destructive the the source accumulator (b) without risk, because b will never be used again. For large data types, it is often useful to do a move of the data from b into a.
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & Destination accumulator \\
+\hline
+{\em b} & Source accumulator \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classctream_1_1collectors_1_1Collector_ae2542ded307a3c5da3ded1000a9cb821}{ctream\+::collectors\+::\+Collector$<$ T, std\+::list$<$ T $>$, std\+::list$<$ T $>$ $>$}}.
+
+\mbox{\Hypertarget{classctream_1_1collectors_1_1ToList_ad687158109ff2ef189928d4455e7ff80}\label{classctream_1_1collectors_1_1ToList_ad687158109ff2ef189928d4455e7ff80}} 
+\index{ctream::collectors::ToList$<$ T $>$@{ctream::collectors::ToList$<$ T $>$}!finish@{finish}}
+\index{finish@{finish}!ctream::collectors::ToList$<$ T $>$@{ctream::collectors::ToList$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{finish()}{finish()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+std\+::list$<$T$>$ \mbox{\hyperlink{classctream_1_1collectors_1_1ToList}{ctream\+::collectors\+::\+To\+List}}$<$ T $>$\+::finish (\begin{DoxyParamCaption}\item[{std\+::list$<$ T $>$ \&}]{a }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Convert the final content of the accumulator into the output. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & Final content of the accumulator \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return\+Type Output of the collector 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classctream_1_1collectors_1_1Collector_a383e637f9f5ad9d14f2af7588586a723}{ctream\+::collectors\+::\+Collector$<$ T, std\+::list$<$ T $>$, std\+::list$<$ T $>$ $>$}}.
+
+\mbox{\Hypertarget{classctream_1_1collectors_1_1ToList_a829261b50cc84c0d40ffd416157367c4}\label{classctream_1_1collectors_1_1ToList_a829261b50cc84c0d40ffd416157367c4}} 
+\index{ctream::collectors::ToList$<$ T $>$@{ctream::collectors::ToList$<$ T $>$}!supply@{supply}}
+\index{supply@{supply}!ctream::collectors::ToList$<$ T $>$@{ctream::collectors::ToList$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{supply()}{supply()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+std\+::list$<$T$>$ \mbox{\hyperlink{classctream_1_1collectors_1_1ToList}{ctream\+::collectors\+::\+To\+List}}$<$ T $>$\+::supply (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+A function that provides a blank accumulator (an accumulator in the expected starting state) 
+
+\begin{DoxyReturn}{Returns}
+Accumulator\+Type A blank accumulator 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classctream_1_1collectors_1_1Collector_a3ec2276ef997e394b0bc42438dc33fa1}{ctream\+::collectors\+::\+Collector$<$ T, std\+::list$<$ T $>$, std\+::list$<$ T $>$ $>$}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/ctream.\+hpp\end{DoxyCompactItemize}

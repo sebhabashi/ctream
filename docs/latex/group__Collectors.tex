@@ -1,0 +1,126 @@
+\hypertarget{group__Collectors}{}\doxysection{Output the streamed data}
+\label{group__Collectors}\index{Output the streamed data@{Output the streamed data}}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename A , typename R  = A$>$ }\\R \mbox{\hyperlink{group__Collectors_gaaf3d9994fdde65da2da7eefae24eda73}{ctream\+::internal\+::\+Ctream$<$ T $>$\+::collect}} (const \mbox{\hyperlink{classctream_1_1collectors_1_1Collector}{collectors\+::\+Collector}}$<$ T, A, R $>$ \&collector) const
+\begin{DoxyCompactList}\small\item\em Use a Collector to extract usable data from the stream. \end{DoxyCompactList}\item 
+T \mbox{\hyperlink{group__Collectors_gadf0af90e711ce20e7a26ca2eafe78366}{ctream\+::internal\+::\+Ctream$<$ T $>$\+::sum}} () const
+\begin{DoxyCompactList}\small\item\em Get the sum of the elements in the stream. \end{DoxyCompactList}\item 
+T \mbox{\hyperlink{group__Collectors_gaadb0b369f3e5f2b2f69206480c251bac}{ctream\+::internal\+::\+Ctream$<$ T $>$\+::product}} () const
+\begin{DoxyCompactList}\small\item\em Get the product of the elements in the stream. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{group__Collectors_gac6b77306ef95685336590bf0e26638e0}{ctream\+::internal\+::\+Ctream$<$ T $>$\+::concat}} () const
+\begin{DoxyCompactList}\small\item\em Get a string that concatenates all elements in the stream. \end{DoxyCompactList}\item 
+std\+::list$<$ T $>$ \mbox{\hyperlink{group__Collectors_ga52131d2c4ffb5ea0a35e2422952e076d}{ctream\+::internal\+::\+Ctream$<$ T $>$\+::to\+List}} () const
+\begin{DoxyCompactList}\small\item\em Get a list containing the elements in the stream. \end{DoxyCompactList}\item 
+std\+::vector$<$ T $>$ \mbox{\hyperlink{group__Collectors_gacfff37b05cc2c4bf6c3f144fea9fdcb5}{ctream\+::internal\+::\+Ctream$<$ T $>$\+::to\+Vector}} () const
+\begin{DoxyCompactList}\small\item\em Get a vector containing the elements in the stream. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{group__Collectors_gaaf3d9994fdde65da2da7eefae24eda73}\label{group__Collectors_gaaf3d9994fdde65da2da7eefae24eda73}} 
+\index{Output the streamed data@{Output the streamed data}!collect@{collect}}
+\index{collect@{collect}!Output the streamed data@{Output the streamed data}}
+\doxysubsubsection{\texorpdfstring{collect()}{collect()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+template$<$typename A , typename R  = A$>$ \\
+R \mbox{\hyperlink{classctream_1_1internal_1_1Ctream}{ctream\+::internal\+::\+Ctream}}$<$ T $>$\+::collect (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classctream_1_1collectors_1_1Collector}{collectors\+::\+Collector}}$<$ T, A, R $>$ \&}]{collector }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Use a Collector to extract usable data from the stream. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em A} & Type of the collector\textquotesingle{}s accumulator (see Collector for more info) \\
+\hline
+{\em R} & Output type \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em collector} & Collector \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+R Output data 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__Collectors_gac6b77306ef95685336590bf0e26638e0}\label{group__Collectors_gac6b77306ef95685336590bf0e26638e0}} 
+\index{Output the streamed data@{Output the streamed data}!concat@{concat}}
+\index{concat@{concat}!Output the streamed data@{Output the streamed data}}
+\doxysubsubsection{\texorpdfstring{concat()}{concat()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+std\+::string \mbox{\hyperlink{classctream_1_1internal_1_1Ctream}{ctream\+::internal\+::\+Ctream}}$<$ T $>$\+::concat (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get a string that concatenates all elements in the stream. 
+
+Only for elements that can be fed to an ostream
+
+\begin{DoxyReturn}{Returns}
+std\+::string Concatenated string 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__Collectors_gaadb0b369f3e5f2b2f69206480c251bac}\label{group__Collectors_gaadb0b369f3e5f2b2f69206480c251bac}} 
+\index{Output the streamed data@{Output the streamed data}!product@{product}}
+\index{product@{product}!Output the streamed data@{Output the streamed data}}
+\doxysubsubsection{\texorpdfstring{product()}{product()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \mbox{\hyperlink{classctream_1_1internal_1_1Ctream}{ctream\+::internal\+::\+Ctream}}$<$ T $>$\+::product (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the product of the elements in the stream. 
+
+Only for elements that are constructible from {\ttfamily 1} and implement product
+
+\begin{DoxyReturn}{Returns}
+T Product of the elements 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__Collectors_gadf0af90e711ce20e7a26ca2eafe78366}\label{group__Collectors_gadf0af90e711ce20e7a26ca2eafe78366}} 
+\index{Output the streamed data@{Output the streamed data}!sum@{sum}}
+\index{sum@{sum}!Output the streamed data@{Output the streamed data}}
+\doxysubsubsection{\texorpdfstring{sum()}{sum()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \mbox{\hyperlink{classctream_1_1internal_1_1Ctream}{ctream\+::internal\+::\+Ctream}}$<$ T $>$\+::sum (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the sum of the elements in the stream. 
+
+Only for elements that are default-\/constructible and implement addition For strings, use concat instead for better performance
+
+\begin{DoxyReturn}{Returns}
+T Sum of the elements 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__Collectors_ga52131d2c4ffb5ea0a35e2422952e076d}\label{group__Collectors_ga52131d2c4ffb5ea0a35e2422952e076d}} 
+\index{Output the streamed data@{Output the streamed data}!toList@{toList}}
+\index{toList@{toList}!Output the streamed data@{Output the streamed data}}
+\doxysubsubsection{\texorpdfstring{toList()}{toList()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+std\+::list$<$T$>$ \mbox{\hyperlink{classctream_1_1internal_1_1Ctream}{ctream\+::internal\+::\+Ctream}}$<$ T $>$\+::to\+List (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get a list containing the elements in the stream. 
+
+\begin{DoxyReturn}{Returns}
+std\+::list$<$\+T$>$ Output list 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__Collectors_gacfff37b05cc2c4bf6c3f144fea9fdcb5}\label{group__Collectors_gacfff37b05cc2c4bf6c3f144fea9fdcb5}} 
+\index{Output the streamed data@{Output the streamed data}!toVector@{toVector}}
+\index{toVector@{toVector}!Output the streamed data@{Output the streamed data}}
+\doxysubsubsection{\texorpdfstring{toVector()}{toVector()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+std\+::vector$<$T$>$ \mbox{\hyperlink{classctream_1_1internal_1_1Ctream}{ctream\+::internal\+::\+Ctream}}$<$ T $>$\+::to\+Vector (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get a vector containing the elements in the stream. 
+
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$\+T$>$ Output vector 
+\end{DoxyReturn}
